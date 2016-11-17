@@ -1,18 +1,33 @@
 package edu.elon.math;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class CalcController implements ControllerInterface{
-	private CalcModel model;
+	private ModelInterface model;
 	private CalcView view;
+	private List<String> operators = Arrays.asList("+", "-", "/", "*");
 	
-	public CalcController(CalcModel model, CalcView view){
+	public CalcController(ModelInterface model){
 		this.model = model;
-		this.view = view;
-	}
-	
-	public void run(){
+		view = new CalcView(this, this.model);
 		view.create();
+	}
+
+	@Override
+	public void addInput(String input) {
+		System.out.println(input);
+		if (input.equals("=")){
+			Double output = model.evaluate();
+			view.setText(output.toString());
+		} else if (operators.contains(input)){
+			view.clearText();
+		} else {
+			String dog = "dog";
+			model.addAppendInput(input);
+			view.setText(model.getFullInput());
+		}
 	}
 }

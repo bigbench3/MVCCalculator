@@ -1,5 +1,13 @@
 package edu.elon.math;
 
-public interface ModelInterface {
+import java.util.Observer;
 
+public interface ModelInterface {
+	
+	public double evaluate();
+
+	public void addAppendInput(String input);
+
+	public String getFullInput();
+	
 }

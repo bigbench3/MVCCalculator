@@ -10,11 +10,17 @@ import java.util.Observer;
 import javax.swing.*;
 
 public class CalcView extends JFrame implements Observer{
+	private ControllerInterface controller;
+	private ModelInterface model;
+	
 	private JTextField inputOutput;
 	private String[] buttons = {"7","8","9","/","4","5","6","*","1","2","3","-","0",".","=","+"};
 	private JPanel calc;
 	
-	public CalcView(){
+	public CalcView(ControllerInterface controller, ModelInterface model){
+		this.controller = controller;
+		this.model = model;
+		
 		setLayout(new BorderLayout());
 		inputOutput = new JTextField();
 		calc = new JPanel();
@@ -26,7 +32,9 @@ public class CalcView extends JFrame implements Observer{
 			jb.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
+					System.out.println("Event");
+					JButton button = (JButton) e.getSource();
+					controller.addInput(button.getText());
 				}
 			});
 		}
@@ -44,6 +52,16 @@ public class CalcView extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setText(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void clearText() {
 		// TODO Auto-generated method stub
 		
 	}
