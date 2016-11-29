@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -52,18 +54,15 @@ public class CalcView extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		inputOutput.setText(arg.toString());
 	}
 
 	public void setText(String string) {
-		// TODO Auto-generated method stub
-		
+		inputOutput.setText(string);
 	}
 
 	public void clearText() {
-		// TODO Auto-generated method stub
-		
+		inputOutput.setText("");
 	}
 
 }

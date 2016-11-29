@@ -10,4 +10,7 @@ public interface ModelInterface {
 
 	public String getFullInput();
 	
+	public void clear();
+
+	void addObserverI(Object o);
 }
